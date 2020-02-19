@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>To Do App Sample</title>
+
+</head>
+<body>
+<div id="wrapper">
+    <header>
+        <h1>To Do App Sample</h1>
+        <p>You must customize this page for your needs.</p>
+    </header>
+
+    <h2>Add a task</h2>
+    <section id="addTask">
+			<form id="addForm" action="" method="post">
+				<label>Description: <input type="text" name="description" id="description"></label>
+				<input type="submit" value="Add Task">
+			</form>
+			<script src="js/insert_task.js"></script>
+    </section>
+
+    <section id="pendingList">
+        <h2>Tasks to do</h2>
+
+        <div id="pendingContainer"></div>
+        <script src="js/select_pending.js"></script>
+        <script src="js/update_task.js"></script>
+    </section>
+    <section id="completedList">
+        <h2>Last completed tasks</h2>
+
+        <div id="completedContainer"></div>
+        <script src="js/select_completed.js"></script>
+    </section>
+
+</div><!--wrapper-->
+</body>
+</html>
