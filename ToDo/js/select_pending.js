@@ -39,11 +39,11 @@ var select_pending = function () {
 				taskDIV.className = "pendingTask";
 				
 				//Task Description
-				let descriptionP = document.createElement('p');
-				descriptionP.innerHTML = itemRaw[c].description;
+				let descriptionSPAN = document.createElement('span');
+				descriptionSPAN.innerHTML = itemRaw[c].description;
 
 				//Create Complete Button
-				let bttnP = document.createElement('p');
+				let bttnSPAN = document.createElement('span');
 				let bttn = document.createElement("a");
 				bttn.innerHTML = "&#10004;";
 				bttn.addEventListener("click", function () {
@@ -51,9 +51,9 @@ var select_pending = function () {
 				});
 
 				//Organize the structure and dump in html
-				bttnP.appendChild(bttn);
-				taskDIV.appendChild(bttnP);
-				taskDIV.appendChild(descriptionP);
+				bttnSPAN.appendChild(bttn);
+				taskDIV.appendChild(bttnSPAN);
+				taskDIV.appendChild(descriptionSPAN);
 				container.appendChild(taskDIV);
 
 			}
