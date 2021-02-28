@@ -1,4 +1,4 @@
-/* Handler to add update a task, set it as completed
+/* Handler update a task, set it as completed
 	Calls update_task.php to dump item in DB
 */
 
@@ -10,6 +10,7 @@ var update_task = function(taskID) {
         const xhr = new XMLHttpRequest();
         let formData = new FormData();
         //Add the task’s ID to be sent to the PHP
+        // This comes from the JS/HTML in select_pending.js
         formData.append("ID",taskID);
 
         //Connect to the PHP

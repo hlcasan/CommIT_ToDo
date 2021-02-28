@@ -10,6 +10,10 @@ var select_pending = function () {
 	//Handles the server call to the PHP file and the data we get back
 	const xhr = new XMLHttpRequest();
 
+	//Send the current user’s ID
+	var formData = new FormData();
+	formData.append("user",window.localStorage.getItem("todoUser"));
+
 	//Will contain the raw data from the DB
 	let itemRaw = [];
 
@@ -33,33 +37,33 @@ var select_pending = function () {
 			for (let c in itemRaw) {
 				//c refers to every task found, one at a time
 				console.log(c);
-				
-				//Container div for each task
-				let taskDIV = document.createElement('div');
-				taskDIV.className = "pendingTask";
-				
-				//Task Description
-				let descriptionSPAN = document.createElement('span');
-				descriptionSPAN.innerHTML = itemRaw[c].description;
+
+				/* BUILD YOUR OWN HTML FOR THE LIST ???
+				* Use document.createElement("tag")
+				* See other app for examples.
+				* The values comme in an array: itemRaw
+				* You use it like this:
+				* itemRaw[c].nameOfVar
+				* The nameOfVar is the name you provided to the JSON in the PHP*/
 
 				//Create Complete Button
 				let bttnSPAN = document.createElement('span');
 				let bttn = document.createElement("a");
 				bttn.innerHTML = "&#10004;";
 				bttn.addEventListener("click", function () {
-					update_task(itemRaw[c].ID);
+					update_task(itemRaw[c].ID); //??? Make sure this ID matches your DB
 				});
 
 				//Organize the structure and dump in html
 				bttnSPAN.appendChild(bttn);
-				taskDIV.appendChild(bttnSPAN);
-				taskDIV.appendChild(descriptionSPAN);
-				container.appendChild(taskDIV);
+				???.appendChild(bttnSPAN); // PUT THE BUTTON WHERE YOU WANT IT
+				/* APPEND THE OTHER ELEMENTS FOR YOUR LIST */
+				container.appendChild(???);  //PUT YOUR ITEM ELEMENT IN THE PENDING LIST CONTAINER
 
 			}
         }
 	};
-	xhr.send();
+	xhr.send(formData);
 };
 select_pending();
 

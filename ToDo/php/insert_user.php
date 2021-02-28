@@ -9,26 +9,30 @@ error_reporting(E_ALL);
 
 if ($dbi) {
     //Build the SQL query
-    $ID = $_REQUEST['ID']; //MATCH THE NAMES ???
+    $uname = $_REQUEST['uname'];
 
-    $q = "UPDATE ToDo_Tasks SET completed = 1 WHERE ID = ?"; // match your DB ???
+    $q = ""; /* PROVIDE YOUR OWN SQL ??? */
 
     //prepare statement, execute, store_result
-    if ($updateStmt = $dbi->prepare($q)) {
+    if ($insertStmt = $dbi->prepare($q)) {
         //update bind parameter types & variables as required
         //s=string, i=integer, d=double, b=blob
-        $updateStmt->bind_param("i", $ID);
-        $updateStmt->execute();
-//        $updatedRows += $updateStmt->affected_rows;
+        $insertStmt->bind_param("s", $uname);
+        $insertStmt->execute();
+
+        //Get new user’s ID
+        $rArray[] = [
+            "ID"=>$insertStmt->insert_id /* Make sure this matches */
+        ];
+
+        echo json_encode($rArray);
+
     } else {
         echo "Error";
     }
 
-    //echo($updatedRows);
-    $updateStmt->close();
+    $insertStmt->close();
     $dbi->close();
 }
-// Return to main page
-echo "OK: item updated";
 
 ?>

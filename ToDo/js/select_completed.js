@@ -10,6 +10,10 @@ var select_completed = function () {
 	//Handles the server call to the PHP file and the data we get back
 	const xhr = new XMLHttpRequest();
 
+	//Send the current user’s ID
+	var formData = new FormData();
+	formData.append("user",window.localStorage.getItem("todoUser"));
+
 	//Will contain the raw data from the DB
 	let itemRaw = [];
 
@@ -34,21 +38,18 @@ var select_completed = function () {
 				//c contains every person found, one at a time
 				console.log(c);
 				
-				//Container div for each task
-				let taskDIV = document.createElement('div');
-				taskDIV.className = "completedTask";
-				
-				//Item: Description + Quantity
-				let descriptionP = document.createElement('p');
-				descriptionP.innerHTML = itemRaw[c].description;
+				/* BUILD YOUR OWN HTML FOR THE LIST ???
+				* Use document.createElement("tag")
+				* See other app for examples.
+				* The values comme in an array: itemRaw
+				* You use it like this:
+				* itemRaw[c].nameOfVar
+				* The nameOfVar is the name you provided to the JSON in the PHP*/
 
-				//Organize the structure and dump in html
-				taskDIV.appendChild(descriptionP);
-				container.appendChild(taskDIV);
 			}
         }
 	};
-	xhr.send();
+	xhr.send(formData);
 };
 select_completed();
 

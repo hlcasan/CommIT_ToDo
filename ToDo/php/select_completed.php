@@ -9,21 +9,25 @@ error_reporting(E_ALL);
 
 if ($dbi) {
     // SQL query
-    $q = "SELECT description FROM ToDo_Tasks WHERE completed = 1 ORDER BY T DESC LIMIT 10";
+    $q = ""; /* PROVIDE YOUR OWN QUERY ??? */
 
     // Array to translate to json
     $rArray = array();
 
     if ($stmt = $dbi->prepare($q)) {
+        //Set the user param
+        $??? = $_REQUEST['???']; //MATCH THE NAMES AND REPLACE ???
+        $stmt->bind_param("i",$???); //MATCH THE NAMES AND REPLACE ???
+
         //Prepare output
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($rDescription);
+        $stmt->bind_result($r???);//MATCH THE NAMES AND REPLACE ???
 
         //Collect results
         while($stmt->fetch()) {
             $rArray[] = [
-                "description"=>$rDescription
+                "???"=>$r???  //MATCH THE NAMES AND REPLACE ???
             ];
         }
         

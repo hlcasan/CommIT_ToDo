@@ -7,6 +7,12 @@
 
     <title>To Do App Sample</title>
 
+    <style>
+        .hide {
+            display:none;
+        }
+    </style>
+
 </head>
 <body>
 <div id="wrapper">
@@ -15,29 +21,69 @@
         <p>You must customize this page for your needs.</p>
     </header>
 
-    <h2>Add a task</h2>
-    <section id="addTask">
-			<form id="addForm" action="" method="post">
-				<label>Description: <input type="text" name="description" id="description"></label>
-				<input type="submit" value="Add Task">
-			</form>
-			<script src="js/insert_task.js"></script>
-    </section>
+    <!-- REPLACE EVERY INSTANCE OF ??? BELOW WITH THE NAME THAT MATCHES YOUR SYSTEM -->
+    <!-- And make sure you provide a layout for the screens. Add your own HTML and CSS as needed. -->
 
-    <section id="pendingList">
-        <h2>Tasks to do</h2>
+    <article id="userSpace"><!--This is the user login and account creation screen-->
+        <section id="createAccount">
+            <h2>Create new user</h2>
+            <form id="createUserForm" action="" method="post">
+                <label>Username: <input type="text" name="???" id="???"></label>
+                <input type="submit" value="Create User">
+            </form>
+            <script src="js/insert_user.js"></script>
+        </section>
+        <section id="login">
+            <h2>Log In</h2>
+            <form id="loginForm" action="" method="post">
+                <label>Username: <input type="text" name="???" id="???"></label>
+                <input type="submit" value="Login">
+            </form>
+            <script src="js/login.js"></script>
+        </section>
+    </article>
 
-        <div id="pendingContainer"></div>
-        <script src="js/select_pending.js"></script>
-        <script src="js/update_task.js"></script>
-    </section>
-    <section id="completedList">
-        <h2>Last completed tasks</h2>
+    <article id="appSpace"><!--This is the screen of the app in action-->
+        <h2>Add a task</h2>
+        <section id="addTask">
+                <form id="addForm" action="" method="post">
+                    <label>Description: <input type="text" name="???" id="???"></label>
+                    <input type="submit" value="Add Task">
+                </form>
+                <script src="js/insert_task.js"></script>
+        </section>
 
-        <div id="completedContainer"></div>
-        <script src="js/select_completed.js"></script>
-    </section>
+        <section id="pendingList">
+            <h2>Tasks to do</h2>
+
+            <div id="pendingContainer"></div>
+            <script src="js/select_pending.js"></script>
+            <script src="js/update_task.js"></script>
+        </section>
+        <section id="completedList">
+            <h2>Last 10 completed tasks</h2>
+
+            <div id="completedContainer"></div>
+            <script src="js/select_completed.js"></script>
+        </section>
+    </article>
 
 </div><!--wrapper-->
+<script>
+    // This code is used to control the interface. You need this.
+    let resetUI = function() {
+        if (window.localStorage.getItem("todoUser")) {
+            //we have a user: show app, hide login
+            document.getElementById("userSpace").className = "hide";
+            document.getElementById("appSpace").className = "";
+        }
+        else {
+            // we do not have a user: show login, hide app
+            document.getElementById("userSpace").className = "";
+            document.getElementById("appSpace").className = "hide";
+        }
+    };
+    resetUI(); // call the function on load
+</script>
 </body>
 </html>
